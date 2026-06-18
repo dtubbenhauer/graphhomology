@@ -1,4 +1,4 @@
-# Möbius graph homology
+# Möbius Frobenius algebra homology
 
 This repository contains supplementary computational material for joint work with
 Daniel W. Collison, currently titled
@@ -41,9 +41,9 @@ state of a cube, and each state gives a collection of circles.
 
 For a state \(\alpha\), the notebook forms the chain-group summand
 
-\[
+$$
     V_\alpha = V^{\otimes k_\alpha},
-\]
+$$
 
 where \(k_\alpha\) is the number of circles in the smoothing associated with
 \(\alpha\). The homological degree is the number of one-smoothings in
@@ -51,27 +51,27 @@ where \(k_\alpha\) is the number of circles in the smoothing associated with
 
 The Frobenius algebra used in the notebook is
 
-\[
+$$
     V=\mathbb Q[x,y]/(x^n, y^3-xy).
-\]
+$$
 
 For the default value `n = 1`, this specializes to
 
-\[
+$$
     V=\mathbb Q[y]/(y^3),
-\]
+$$
 
 with basis
 
-\[
+$$
     1,\quad y,\quad y^2.
-\]
+$$
 
 The Frobenius trace is chosen so that, for `n = 1`,
 
-\[
+$$
     \epsilon(y^2)=3,
-\]
+$$
 
 and the trace is zero on the other basis elements. From this data, the notebook
 constructs multiplication, the Frobenius pairing, and the corresponding
@@ -97,15 +97,15 @@ one-smoothings before coordinate \(j\).
 
 After building the differentials, the notebook checks
 
-\[
+$$
     d_{i+1}d_i=0
-\]
+$$
 
 for all homological degrees. It then computes
 
-\[
+$$
     H^i = \ker(d_i)/\operatorname{im}(d_{i-1})
-\]
+$$
 
 using exact rational linear algebra.
 
@@ -175,15 +175,15 @@ homological degree zero, two states with one circle in homological degree one,
 and one state with one circle in homological degree two. The resulting homology
 has dimensions
 
-\[
+$$
     \dim H^0=6,\qquad \dim H^1=1,\qquad \dim H^2=1,
-\]
+$$
 
 so the Poincare polynomial is
 
-\[
+$$
     6+t+t^2.
-\]
+$$
 
 ## What the notebook is doing
 
