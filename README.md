@@ -104,7 +104,7 @@ $$
 for all homological degrees. It then computes
 
 $$
-    H^i = \ker(d_i)/\operatorname{im}(d_{i-1})
+    H^i = \ker(d_i)/\mathrm{im}(d_{i-1})
 $$
 
 using exact rational linear algebra.
