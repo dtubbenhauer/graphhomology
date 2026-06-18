@@ -1,7 +1,7 @@
-# Möbius Frobenius algebra homology
+# Möbius graph homology
 
-This repository contains supplementary computational material for a project
-currently titled
+This repository contains supplementary computational material for joint work with
+Daniel W. Collison, currently titled
 
 > TBA
 
@@ -32,11 +32,11 @@ Same goes for any errors related to this page.
 
 ### `mobius_homology_colab.ipynb`
 
-This notebook is the recommended entry point.  It is self-contained and is meant
+This notebook is the recommended entry point. It is self-contained and is meant
 to run directly in Google Colab.
 
-The input is a finite graph together with a chosen perfect matching.  The
-matching edges are the edges that are smoothed.  Each smoothing choice gives a
+The input is a finite graph together with a chosen perfect matching. The
+matching edges are the edges that are smoothed. Each smoothing choice gives a
 state of a cube, and each state gives a collection of circles.
 
 For a state \(\alpha\), the notebook forms the chain-group summand
@@ -46,7 +46,7 @@ For a state \(\alpha\), the notebook forms the chain-group summand
 \]
 
 where \(k_\alpha\) is the number of circles in the smoothing associated with
-\(\alpha\).  The homological degree is the number of one-smoothings in
+\(\alpha\). The homological degree is the number of one-smoothings in
 \(\alpha\).
 
 The Frobenius algebra used in the notebook is
@@ -73,12 +73,12 @@ The Frobenius trace is chosen so that, for `n = 1`,
     \epsilon(y^2)=3,
 \]
 
-and the trace is zero on the other basis elements.  From this data, the notebook
+and the trace is zero on the other basis elements. From this data, the notebook
 constructs multiplication, the Frobenius pairing, and the corresponding
 comultiplication.
 
-The differential is assembled edge-by-edge in the cube of smoothings.  Along a
-cube edge, exactly one smoothing changes.  The notebook compares the actual
+The differential is assembled edge-by-edge in the cube of smoothings. Along a
+cube edge, exactly one smoothing changes. The notebook compares the actual
 circle decompositions before and after the change and applies the corresponding
 local map:
 
@@ -88,7 +88,7 @@ local map:
   Möbius-type local change.
 
 The notebook tracks the actual circle components, not just the number of
-circles.  This matters because the local map has to be applied to the correct
+circles. This matters because the local map has to be applied to the correct
 tensor factor or tensor factors inside \(V^{\otimes k}\).
 
 The signs in the differential are the usual cube signs: when changing the
@@ -101,7 +101,7 @@ After building the differentials, the notebook checks
     d_{i+1}d_i=0
 \]
 
-for all homological degrees.  It then computes
+for all homological degrees. It then computes
 
 \[
     H^i = \ker(d_i)/\operatorname{im}(d_{i-1})
@@ -118,21 +118,21 @@ The final output includes:
 
 ## Requirements
 
-The notebook is designed for Google Colab.  No Sage installation is required.
+The notebook is designed for Google Colab. No Sage installation is required.
 
 It uses:
 
 1. `sympy`, for exact rational matrices, ranks, and kernels;
 2. `itertools`, `collections`, and other standard-library Python modules.
 
-Google Colab already provides `sympy`.  If running locally instead, install it
+Google Colab already provides `sympy`. If running locally instead, install it
 with
 
 ```bash
 python3 -m pip install sympy
 ```
 
-The computation avoids floating-point linear algebra.  Matrix ranks, nullities,
+The computation avoids floating-point linear algebra. Matrix ranks, nullities,
 and homology dimensions are computed over exact rational numbers.
 
 ## Examples
@@ -172,7 +172,7 @@ Poincare polynomial: t**2 + t + 6
 
 This means that the cube of smoothings has one state with two circles in
 homological degree zero, two states with one circle in homological degree one,
-and one state with one circle in homological degree two.  The resulting homology
+and one state with one circle in homological degree two. The resulting homology
 has dimensions
 
 \[
@@ -189,20 +189,20 @@ so the Poincare polynomial is
 
 The computation proceeds in five steps.
 
-First, the notebook enumerates all smoothing states.  If there are \(r\)
-matching edges, then there are \(2^r\) states.  A state is a binary vector of
+First, the notebook enumerates all smoothing states. If there are \(r\)
+matching edges, then there are \(2^r\) states. A state is a binary vector of
 length \(r\).
 
 Second, for each state, the notebook constructs the actual smoothed circle
-components.  These components are stored combinatorially, so that the code knows
+components. These components are stored combinatorially, so that the code knows
 which tensor factor corresponds to which circle.
 
-Third, the notebook constructs the cube differential.  It only connects states
-that differ in exactly one smoothing coordinate.  This avoids the common mistake
+Third, the notebook constructs the cube differential. It only connects states
+that differ in exactly one smoothing coordinate. This avoids the common mistake
 of connecting all states in adjacent homological degrees.
 
 Fourth, along each genuine cube edge, the notebook identifies the local change
-in the circle decomposition.  Depending on the change, it inserts \(\mu\),
+in the circle decomposition. Depending on the change, it inserts \(\mu\),
 \(\Delta\), or \(m\), together with identity maps on all unaffected tensor
 factors.
 
@@ -231,6 +231,8 @@ The computations are intended to support examples and checks in the paper
 
 > TBA
 
+joint with Daniel W. Collison.
+
 The arXiv placeholder is
 
 ```text
@@ -240,8 +242,8 @@ arXiv:TBA
 The suggested citation is:
 
 ```bibtex
-@misc{MobiusHomologyData,
-  author = {Tubbenhauer, Daniel},
+@misc{CollisonTubbenhauerMobiusHomologyData,
+  author = {Collison, D.W. and Tubbenhauer, D.},
   title = {Möbius Frobenius algebra homology computations},
   year = {2026},
   note = {Supplementary computational data},
