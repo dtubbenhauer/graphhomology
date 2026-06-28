@@ -1,9 +1,9 @@
-# Möbius Frobenius algebra homology
+# Categorification of some Penrose polynomials
 
 This repository contains supplementary computational material for joint work with
-Daniel W. Collison, currently titled
+Daniel W. Collison, titled
 
-> TBA
+> Categorification of some Penrose polynomials
 
 The arXiv version will be available at
 
