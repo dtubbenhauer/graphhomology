@@ -244,10 +244,9 @@ The suggested citation is:
 ```bibtex
 @misc{CollisonTubbenhauerMobiusHomologyData,
   author = {Collison, D.W. and Tubbenhauer, D.},
-  title = {Möbius Frobenius algebra homology computations},
+  title = {Code, data and more for ``{C}ategorification of some {P}enrose polynomials''},
   year = {2026},
-  note = {Supplementary computational data},
-  url = {https://github.com/dtubbenhauer/TBA}
+  url = \url{https://github.com/dtubbenhauer/graphhomology}
 }
 ```
 
