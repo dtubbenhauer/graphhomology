@@ -7,7 +7,7 @@ Daniel W. Collison, titled
 
 The arXiv version will be available at
 
-> arXiv:TBA
+> https://arxiv.org/abs/2607.01632
 
 The repository contains one main file:
 
