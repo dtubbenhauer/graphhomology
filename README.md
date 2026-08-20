@@ -229,14 +229,14 @@ The notebook uses the following conventions.
 
 The computations are intended to support examples and checks in the paper
 
-> TBA
+Categorification of some Penrose polynomials
 
 joint with Daniel W. Collison.
 
 The arXiv placeholder is
 
 ```text
-arXiv:TBA
+arXiv:2607.01632
 ```
 
 The suggested citation is:
