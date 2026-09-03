@@ -39,15 +39,15 @@ The input is a finite graph together with a chosen perfect matching. The
 matching edges are the edges that are smoothed. Each smoothing choice gives a
 state of a cube, and each state gives a collection of circles.
 
-For a state \(\alpha\), the notebook forms the chain-group summand
+For a state $alpha$, the notebook forms the chain-group summand
 
 $$
     V_\alpha = V^{\otimes k_\alpha},
 $$
 
-where \(k_\alpha\) is the number of circles in the smoothing associated with
-\(\alpha\). The homological degree is the number of one-smoothings in
-\(\alpha\).
+where $k_\alpha$ is the number of circles in the smoothing associated with
+$\alpha$. The homological degree is the number of one-smoothings in
+$\alpha$.
 
 The Frobenius algebra used in the notebook is
 
@@ -82,18 +82,18 @@ cube edge, exactly one smoothing changes. The notebook compares the actual
 circle decompositions before and after the change and applies the corresponding
 local map:
 
-- multiplication \(\mu\), when two circles merge into one;
-- comultiplication \(\Delta\), when one circle splits into two;
-- the Möbius map \(m\), when one circle remains one circle but passes through a
+- multiplication $\mu$, when two circles merge into one;
+- comultiplication $\Delta$, when one circle splits into two;
+- the Möbius map $m$, when one circle remains one circle but passes through a
   Möbius-type local change.
 
 The notebook tracks the actual circle components, not just the number of
 circles. This matters because the local map has to be applied to the correct
-tensor factor or tensor factors inside \(V^{\otimes k}\).
+tensor factor or tensor factors inside $V^{\otimes k}$.
 
 The signs in the differential are the usual cube signs: when changing the
-\(j\)-th smoothing coordinate, the sign is determined by the number of
-one-smoothings before coordinate \(j\).
+$j$-th smoothing coordinate, the sign is determined by the number of
+one-smoothings before coordinate $j$.
 
 After building the differentials, the notebook checks
 
@@ -112,7 +112,7 @@ using exact rational linear algebra.
 The final output includes:
 
 - the number of circles in every smoothing state;
-- whether \(d^2=0\);
+- whether $d^2=0$;
 - the homology dimensions by homological degree;
 - the corresponding Poincare polynomial.
 
@@ -189,9 +189,9 @@ $$
 
 The computation proceeds in five steps.
 
-First, the notebook enumerates all smoothing states. If there are \(r\)
-matching edges, then there are \(2^r\) states. A state is a binary vector of
-length \(r\).
+First, the notebook enumerates all smoothing states. If there are $r$
+matching edges, then there are $2^r$ states. A state is a binary vector of
+length $r$.
 
 Second, for each state, the notebook constructs the actual smoothed circle
 components. These components are stored combinatorially, so that the code knows
@@ -202,8 +202,8 @@ that differ in exactly one smoothing coordinate. This avoids the common mistake
 of connecting all states in adjacent homological degrees.
 
 Fourth, along each genuine cube edge, the notebook identifies the local change
-in the circle decomposition. Depending on the change, it inserts \(\mu\),
-\(\Delta\), or \(m\), together with identity maps on all unaffected tensor
+in the circle decomposition. Depending on the change, it inserts $\mu$,
+$\Delta$, or $m$, together with identity maps on all unaffected tensor
 factors.
 
 Fifth, the notebook assembles the differential matrices, checks that their
@@ -220,9 +220,9 @@ The notebook uses the following conventions.
 - Homological degree is the number of one-smoothings.
 - Cube signs are determined by the number of earlier one-smoothings.
 - The local map is chosen from the actual circle change:
-  \(2\to 1\) gives \(\mu\), \(1\to 2\) gives \(\Delta\), and \(1\to 1\) gives
-  the Möbius map \(m\).
-- Linear algebra is over \(\mathbb Q\).
+  $2\to 1$ gives $\mu$, $1\to 2$ gives $\Delta$, and $1\to 1$ gives
+  the Möbius map $m$.
+- Linear algebra is over $\mathbb{Q}$.
 - The displayed Poincare polynomial records only homological degree.
 
 ## Relation to the paper
