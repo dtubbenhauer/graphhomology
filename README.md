@@ -39,7 +39,7 @@ The input is a finite graph together with a chosen perfect matching. The
 matching edges are the edges that are smoothed. Each smoothing choice gives a
 state of a cube, and each state gives a collection of circles.
 
-For a state $alpha$, the notebook forms the chain-group summand
+For a state $\alpha$, the notebook forms the chain-group summand
 
 $$
     V_\alpha = V^{\otimes k_\alpha},
