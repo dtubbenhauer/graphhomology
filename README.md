@@ -1,9 +1,9 @@
-# Categorification of some Penrose polynomials
+# Categorifying the Penrose polynomial using nonorientable surfaces
 
 This repository contains supplementary computational material for joint work with
 Daniel W. Collison, titled
 
-> Categorification of some Penrose polynomials
+> Categorifying the Penrose polynomial using nonorientable surfaces
 
 The arXiv version will be available at
 
@@ -272,7 +272,6 @@ The output for this example is
 Number of 3-face colorings: 6
 ```
 
-
 ## What the notebook is doing
 
 The main computation proceeds in five steps.
@@ -316,7 +315,7 @@ The notebook uses the following conventions.
 
 The computations are intended to support examples and checks in the paper
 
-Categorification of some Penrose polynomials
+Categorifying the Penrose polynomial using nonorientable surfaces
 
 joint with Daniel W. Collison.
 
@@ -331,7 +330,7 @@ The suggested citation is:
 ```bibtex
 @misc{CollisonTubbenhauerMobiusHomologyData,
   author = {Collison, D.W. and Tubbenhauer, D.},
-  title = {Code, data and more for ``{C}ategorification of some {P}enrose polynomials''},
+  title = {Code, data and more for ``{C}ategorifying the {P}enrose polynomial using nonorientable surfaces''},
   year = {2026},
   url = \url{https://github.com/dtubbenhauer/graphhomology}
 }
