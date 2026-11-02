@@ -38,15 +38,15 @@ to run directly in Google Colab.
 The input is a finite graph. If the graph is trivalent, a perfect matching may be specified. In all other cases, the canonical perfect matching of the blowup of the graph is taken. The
 matching edges are then smoothed, and each smoothing choice gives a single state of a hypercube. Each state then corresponds to a collection of circles.
 
-For a state $\alpha$, the notebook forms the chain-group summand
+For a state $\kappa$, the notebook forms the chain-group summand
 
 $$
-    V_\alpha = V^{\otimes k_\alpha},
+    V_\kappa = V^{\otimes k_\kappa},
 $$
 
-where $k_\alpha$ is the number of circles in the smoothing associated with
-$\alpha$. The homological degree is the number of one-smoothings in
-$\alpha$.
+where $k_\kappa$ is the number of circles in the smoothing associated with
+$\kappa$. The homological degree is the number of one-smoothings in
+$\kappa$.
 
 The two algebras used in the notebook are
 
