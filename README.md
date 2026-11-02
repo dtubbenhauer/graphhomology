@@ -120,7 +120,7 @@ local map:
 
 The notebook tracks the actual circle components, not just the number of
 circles. This matters because the local map has to be applied to the correct
-tensor factor or tensor factors inside $V^{\otimes k}$.
+tensor factor or tensor factors inside $V^{\otimes k_\kappa}$.
 
 The signs in the differential are the usual cube signs: when changing the
 $j$-th smoothing coordinate, the sign is determined by the number of
