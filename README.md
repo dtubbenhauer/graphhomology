@@ -45,7 +45,7 @@ $$
 $$
 
 where $k_\kappa$ is the number of circles in the smoothing associated with
-$\kappa$. The homological degree is the number of one-smoothings in
+$\kappa$. The homological degree is the number of 1-smoothings in
 $\kappa$.
 
 The two algebras used in the notebook are
