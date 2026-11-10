@@ -1,0 +1,397 @@
+\pdfoutput=1
+\documentclass[a4paper,11pt]{amsart}
+\usepackage[hmarginratio={1:1},vmarginratio={1:1},lmargin=60.0pt,tmargin=60.0pt]{geometry}
+
+\allowdisplaybreaks
+
+\usepackage[numbers]{natbib}
+\usepackage{latexsym,mathtools,amssymb,stmaryrd}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{diagbox,makecell,caption}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepgfplotslibrary{polar}
+\pgfplotsset{compat=newest}
+\usepackage{multirow}
+\usetikzlibrary{cd,decorations.markings,arrows.meta,positioning,calc,tqft}
+\usepackage{aliascnt,etoolbox}
+\usepackage[hypertexnames=false]{hyperref}
+\usepackage{bookmark}
+\usepackage{listings}
+
+\captionsetup[table]{skip=10pt}
+
+\setlist[enumerate]{itemsep=0.15cm,label=\emph{\upshape(\alph*)}}
+\setlist[enumerate,2]{itemsep=0.15cm,label=\emph{\upshape(\roman*)}}
+
+% colors
+\definecolor{spinach}{RGB}{46,139,87}
+\definecolor{tomato}{RGB}{255,99,71}
+\definecolor{orchid}{RGB}{143,40,194}
+\definecolor{lava}{RGB}{207,16,32}
+\definecolor{cream}{RGB}{255,253,208}
+\definecolor{verdigris}{RGB}{67,179,174}
+\definecolor{mydarkblue}{RGB}{10,10,170}
+
+% general notation
+\let\emph\relax
+\DeclareTextFontCommand{\emph}{\bfseries\em}
+\renewcommand{\dots}{\text{...}}
+
+\newcommand{\eg}{\text{e.g.}}
+\newcommand{\ie}{\text{i.e.}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\End}{\mathrm{End}}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\id}{id}
+
+\newcommand{\paraa}{\alpha}
+\newcommand{\parab}{\beta}
+\newcommand{\parac}{\gamma}
+
+\newcommand{\cob}{\mathbf{2Cob}}
+\newcommand{\mcob}[1]{\mathbf{MCob}_{#1}}
+\newcommand{\mucob}[3]{\mathbf{MCob}_{#1, #2, #3}}
+
+% tikz
+\tikzset{
+anchorbase/.style={baseline={([yshift=#1]current bounding box.center)}},
+anchorbase/.default={-0.5ex},
+tinynodes/.style={font=\tiny,text height=0.25ex,text depth=0.05ex},
+mor/.style={line width=0.75,color=black,fill=cream},
+usual/.style={line width=1.2,color=black},
+match/.style={line width=1.2, densely dotted, color=verdigris},
+ribbon/.style={double, double distance=4pt, line width=0.8pt, black},
+ribbon boundary/.style={line width=0.8pt, black},
+vertex/.style={circle, draw, fill=white, minimum size=14pt, line width=0.8pt},
+hol/.style={
+decoration={markings,
+post length=0.25mm,
+pre length=0.25mm,
+mark=at position #1 with {\node[circle,radius=0.15cm,inner sep=-1.2pt,draw,color=black,fill=white]{};}
+},
+postaction={decorate}
+},
+mob/.style={
+decoration={markings,
+post length=0.25mm,
+pre length=0.25mm,
+mark=at position #1 with {\node[circle,radius=0.15cm,inner sep=-1.2pt,draw, color=tomato,fill=tomato]{};}
+},
+postaction={decorate}
+},
+dot/.style={
+decoration={markings,
+post length=0.25mm,
+pre length=0.25mm,
+mark=at position #1 with {\node[circle,radius=0.5cm,inner sep=-1.5pt,color=black,fill=black]{};}
+},
+postaction={decorate}
+},
+dot/.default=1
+}
+
+\let\oldlightning\lightning
+\renewcommand{\lightning}{\textcolor{tomato}{\pmb{\oldlightning}}}
+
+% theorems
+\usepackage{amsthm}
+\newtheorem*{Theorem}{Theorem}
+\newtheorem*{lemma}{Lemma}
+
+\setcounter{tocdepth}{1}
+\setcounter{secnumdepth}{3}
+\hypersetup{
+pdftoolbar=true,
+pdfmenubar=true,
+pdffitwindow=false,
+pdfstartview={FitH},
+pdftitle={Additional material},
+pdfauthor={Daniel W. Collison and Daniel Tubbenhauer},
+pdfsubject={},
+pdfcreator={Daniel W. Collison and Daniel Tubbenhauer},
+pdfproducer={Daniel W. Collison and Daniel Tubbenhauer},
+pdfkeywords={},
+pdfnewwindow=true,
+colorlinks=true,
+linkcolor=mydarkblue,
+citecolor=teal,
+filecolor=magenta,
+urlcolor=orchid,
+linkbordercolor=lava,
+citebordercolor=teal,
+urlbordercolor=orchid,
+linktocpage=true
+}
+
+\newcommand{\nnfootnote}[1]{%
+\begin{NoHyper}
+\renewcommand\thefootnote{}\footnote{#1}%
+\addtocounter{footnote}{-1}%
+\end{NoHyper}
+}
+
+% code listings
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolor}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+backgroundcolor=\color{backcolor},
+commentstyle=\color{codegreen},
+keywordstyle=\color{magenta},
+stringstyle=\color{codepurple},
+basicstyle=\ttfamily\footnotesize,
+breakatwhitespace=false,
+breaklines=true,
+captionpos=b,
+keepspaces=true,
+showspaces=false,
+showstringspaces=false,
+showtabs=false,
+tabsize=2
+}
+\lstset{style=mystyle}
+
+% autoref names
+\def\makeautorefname#1#2{\csdef{#1autorefname}{#2}}
+\makeautorefname{section}{Section}%
+\makeautorefname{subsection}{Section}%
+\makeautorefname{subsubsection}{Section}%
+
+\begin{document}
+\title[Additional material]{Additional material}
+\author[D. W. Collison and D. Tubbenhauer]{Daniel W. Collison and Daniel Tubbenhauer}
+
+\address{D.W.C.: The University of Sydney, School of Mathematics and Statistics F07, NSW 2006, Australia}
+\email{daniel.collison@sydney.edu.au}
+
+\address{D.T.: The University of Sydney, School of Mathematics and Statistics F07, Office Carslaw 827, NSW 2006, Australia, \href{http://www.dtubbenhauer.com}{www.dtubbenhauer.com}, https://orcid.org/0000-0001-7265-5047}
+\email{daniel.tubbenhauer@sydney.edu.au}
+
+
+\maketitle
+
+
+
+\begin{lemma}\label{colorbasislem}
+(See \cite[Lemma 6A.5]{penrose-cat}). Given the color basis, we have the following:
+\begin{enumerate}
+\item $p_k \cdot p_m = \delta_{km}p_m$, and hence $E_{k, 0} \cdot E_{m,0} = \delta_{km}E_{m, 0}$ and $E_{k, \pm} \cdot E_{m,\pm} = \delta_{km}E_{m, \pm}$, while all other products between color basis elements are zero;
+\item $\Delta_{n, 1}(E_{k,0})= -\frac{1}{3} f_{n, k} E_{k,0} \otimes E_{k,0}$ and $\Delta_{n,1}(E_{k,\pm})= \frac{2}{3}f_{n,k} E_{k,\pm} \otimes E_{k,\pm}$;
+\item $m_{n,1}(E_{k,0})= u g_{n,k}E_{k,0}$ and $m_{n,1}(E_{k,\pm})= (u+w) g_{n, k}E_{k,\pm}$,
+\end{enumerate}
+where 
+\begin{align*}
+f_{n, k} = \begin{cases*}
+1 &  $n$ even \\
+\omega^k &  $n$ odd
+\end{cases*},
+&  &
+g_{n, k} = \begin{cases*}
+\omega^{kn/2}&  $n$ even \\
+\omega^{k(n+1)/2} &  $n$ odd
+\end{cases*}.
+\end{align*}
+In other words, $\partial_{n,1}$ is diagonal in the color basis.
+\end{lemma}
+
+\begin{proof}
+$\textbf{(a)}$ The calcuation is straightfoward using the following result:
+$$p_k \,x^{n-\ell} = \omega^{-k\ell} p_k$$ for all $\ell = 1, \ldots, n$.
+
+For $\textbf{(b)}$, let us use the fact that $\xi=1$ to simplify the expression for $\Delta_{n, 
+1}$:
+\begin{align*}
+\Delta_{n,1}(v) =&  -\frac{1}{3n}  \sum\limits_{\substack{i+j \equiv c_n \,\text{mod} \, n }} (v \cdot x^i) \otimes x^j \\
+&+ \frac{1}{3n}\sum\limits_{\substack{i+j \equiv (c_n-1) \,\text{mod} \, n }} (v \cdot x^i y^2) \otimes x^j + (v \cdot x^iy) \otimes x^jy + (v \cdot x^i) \otimes x^jy^2.
+\end{align*}
+for $c_n = \begin{cases*} 0 & $n$ even \\ 
+1 & $n$ odd \end{cases*}$.
+
+We now show that $\Delta_{n,1}(E_{k,0})= -\frac{1}{3}f_{n,k}E_{k,0} \otimes E_{k,0}$. The other cases involving $E_{k, \pm}$ proceed similarly. 
+
+Firstly, 
+\begin{align*}
+E_{k,0} \otimes E_{k,0} 
+&= p_k(1-x^{n-1}y^2) \otimes p_k(1-x^{n-1}y^2) \\
+&= p_k \otimes p_k - \omega^{-k} p_k \otimes p_k y^2 - \omega^{-k} p_k y^2\otimes p_k + \omega^{-2k} p_k y^2\otimes p_k y^2 \\
+&= \frac{1}{n^2}\sum_{r, s=0}^{n-1} \omega^{-k(r+s)}x^r \otimes x^s -\frac{1}{n^2}\sum_{r, s=0}^{n-1} \omega^{-k(r+s+1)}x^r \otimes x^sy^2 \\
+&- \frac{1}{n^2}\sum_{r, s=0}^{n-1} \omega^{-k(r+s+1)}x^ry^2 \otimes x^s +\frac{1}{n^2}\sum_{r, s=0}^{n-1} \omega^{-k(r+s+2)}x^ry^2 \otimes x^sy^2 \\
+&= \frac{1}{n^2}\sum_{\substack{\ell, r, s = 0 \\ r+s \equiv \ell \, \text{mod} \, n}}^{n-1} \omega^{-k\ell}x^r \otimes x^s -\frac{1}{n^2}\sum_{\substack{\ell, r, s = 0 \\ r+s +1\equiv \ell \, \text{mod} \, n}}^{n-1} \omega^{-k\ell}(x^r \otimes x^sy^2 + x^ry^2 \otimes x^s)\\
+&+\frac{1}{n^2}\sum_{\substack{\ell, r, s = 0 \\ r+s +2\equiv \ell \, \text{mod} \, n}}^{n-1} \omega^{-k\ell}x^ry^2 \otimes x^sy^2.
+\end{align*}
+On the other hand,
+\begin{align*}
+\Delta_{n,1}(E_{k,0})&= \Delta_{n, 1}(p_k)-\omega^{-k}\Delta_{n,1}(p_ky^2
+) \\
+&=-\frac{1}{3n^2}\sum_{\substack{\ell, i, j = 0 \\ i+j\equiv c_n \, \text{mod} \, n}}^{n-1} \omega^{-k\ell}x^{\ell+i} \otimes x^j  +\frac{1}{3n^2}\sum_{\substack{\ell, i, j = 0 \\ i+j \equiv (c_n-1) \, \text{mod} \, n}}^{n-1} \omega^{-k\ell}x^{\ell+i}y^2 \otimes x^j  \\
+&+ \frac{1}{3n^2}\sum_{\substack{\ell, i, j = 0 \\ i+j \equiv (c_n-1) \, \text{mod} \, n}}^{n-1} \omega^{-k\ell}( x^{\ell+i}y \otimes x^jy + x^{\ell+i} \otimes x^jy^2) \\&+\frac{1}{3n^2}\sum_{\substack{\ell, i, j = 0 \\ i+j\equiv c_n \, \text{mod} \, n}}^{n-1} \omega^{-k(\ell+1)}x^{\ell+i}y^2\otimes x^j - \frac{1}{3n^2}\sum_{\substack{\ell, i, j = 0 \\ i+j\equiv (c_n-1) \, \text{mod} \, n}}^{n-1} \omega^{-k(\ell+1)}x^{\ell+i+1}y^2\otimes x^j \\&- \frac{1}{3n^2}\sum_{\substack{\ell, i, j = 0 \\ i+j \equiv (c_n-1) \, \text{mod} \, n}}^{n-1} \omega^{-k(\ell+1)}( x^{\ell+i+1}y \otimes x^iy + x^{\ell+i}y^2 \otimes x^jy^2) 
+\\
+&=-\frac{1}{3n^2}f_{n,k}\sum_{\substack{\ell, r, s = 0 \\ r+s\equiv \ell \, \text{mod} \, n}}^{n-1} \omega^{-k\ell}x^{r} \otimes x^s  +\frac{1}{3n^2}f_{n,k}\sum_{\substack{\ell, r, s = 0 \\ r+s +1 \equiv \ell \, \text{mod} \, n}}^{n-1} \omega^{-k\ell}x^{r}y^2 \otimes x^s  \\
+&+ \frac{1}{3n^2}f_{n,k}\sum_{\substack{\ell, r, s = 0 \\ r+s+1 \equiv \ell \, \text{mod} \, n}}^{n-1} \omega^{-k\ell} x^{r} \otimes x^sy^2 - \frac{1}{3n^2}f_{n,k}\sum_{\substack{\ell, r, s = 0 \\ r+s+2 \equiv \ell \, \text{mod} \, n}}^{n-1} \omega^{-k\ell}x^{r}y^2 \otimes x^sy^2,
+\end{align*}
+and so the result follows.
+
+Finally, $\textbf{(c)}$ follows straightforwardly. For example, 
+\begin{align*}
+m_{n, 1}(E_{k,0})&=m_{n, 1}(p_k) - \omega^{-k}m_{n,1}(p_ky^2) \\
+&=u p_k x^{n/2} + w p_k x^{(n-2)/2}y^2 - \omega^{-k}u p_k x^{n/2}y^2 - \omega^{-k}w p_k x^{(n-2)/2+1}y^2 \\
+&= u p_k x^{n/2}- \omega^{-k}u p_k x^{n/2}y^2 
+\\
+& = u\omega^{kn/2}(p_k - \omega^{-k}p_ky^2) = u\omega^{kn/2} E_{k,0},
+\end{align*}
+for $n$ even, and the rest are similar.
+\end{proof}
+
+\begin{Theorem}\label{k32graphtheorem}
+(See \cite[Theorem 7B.9]{penrose-cat}). For the complete graph $K_{4}$,
+\begin{align*}
+Mh_{n,1}(K_{4}) &= n\big(n^3(40b+41)-6n^2(13b+14) +11n(4b+5)-6(b+2)\big)t^4 \\& \hspace{1.5cm} + n\big(n^2(13b+14)-3n(4b+5) +2(b+2)\big)t^2,
+\end{align*}
+and for the complete bipartite graph $K_{3,2}$,
+\begin{align*}
+Mh_{n,1}(K_{3,2})= n\big(n^2(13b+14)-3n(4b+5) +2(b+2)\big)(t^6 +3t^4+3t^2+1).
+\end{align*}
+\end{Theorem}
+\begin{proof}
+We begin by inspecting the circle counts associated with the hypercube of states of the blowup of $K_{4}$, obtained using the code described in \cite{penrose-cat, CoTu-code}:
+\begin{lstlisting}[language=Python]
+circle counts by homological degree: [[2], [1, 2, 1, 1, 2, 1], [1, 2, 2, 1, 2, 1, 1, 3, 1, 2, 1, 2, 1, 2, 1], [2, 1, 2, 1, 3, 1, 3, 2, 3, 1, 1, 2, 1, 2, 2, 2, 1, 3, 2, 1], [2, 1, 2, 1, 2, 2, 2, 4, 2, 2, 2, 2, 1, 1, 2], [1, 3, 1, 1, 3, 1], [2]]
+\end{lstlisting}
+The maximum number of circles of any state is $4$, and so by using \cite[Remark 7B.2]{penrose-cat}, we only need to solve for the coefficients of a degree four polynomial in $n$ without a constant term,
+\begin{align*}
+c_1n^4 + c_2n^3 + c_3n^2 + c_4n,
+\end{align*}
+for each degree of $t$ up to six and $b$ up to one, using the data from \autoref{table:completepoly} for $K_{4}$ up to $n=4$. The only nontrivial systems of equations that require solving are 
+\begin{align*}
+\alpha_1 + \alpha_2 + \alpha_3 + \alpha_4 &=0 & \beta_1 + \beta_2 + \beta_3 + \beta_4 &=0 \\
+16 \alpha_1 + 8 \alpha_2 + 4\alpha_3 + 2\alpha_4 &= 180 & 16 \beta_1 + 8 \beta_2 + 4\beta_3 + 2\beta_4 &= 180 \\
+81 \alpha_1 + 27 \alpha_2 + 9\alpha_3 + 3\alpha_4 &= 1512 & 81 \beta_1 + 27 \beta_2 + 9\beta_3 + 3\beta_4 &= 1512 \\
+256 \alpha_1 + 64 \alpha_2 + 16\alpha_3 + 4\alpha_4 &= 5928 & 256 \beta_1 + 64 \beta_2 + 16\beta_3 + 4\beta_4 &= 5952
+\end{align*}
+associated with degree one and zero in $b$ respectively for degree four in $t$, and similarly for degree two in $t$:
+\begin{align*}
+ \delta_1 + \delta_2 + \delta_3 + \delta_4 &=3  & \gamma_1 + \gamma_2 + \gamma_3 + \gamma_4 &=3\\
+ 16 \delta_1 + 8 \delta_2 + 4\delta_3 + 2\delta_4 &= 60 & 
+16 \gamma_1 + 8 \gamma_2 + 4\gamma_3 + 2\gamma_4 &= 60  \\
+81 \delta_1 + 27 \delta_2 + 9\delta_3 + 3\delta_4 &= 249 & 
+81 \gamma_1 + 27 \gamma_2 + 9\gamma_3 + 3\gamma_4 &= 255 \\
+256 \delta_1 + 64 \delta_2 + 16\delta_3 + 4\delta_4 &= 648 & 
+256 \gamma_1 + 64 \gamma_2 + 16\gamma_3 + 4\gamma_4 &= 672 
+\end{align*}
+The reader is encouraged to check that the solutions are given by 
+\begin{align}\label{solutions}
+\begin{pmatrix}
+\alpha_1 \\
+\alpha_2 \\ 
+\alpha_3 \\
+\alpha_4
+\end{pmatrix} &= \begin{pmatrix}
+40 \\
+-78 \\ 
+44 \\
+-6
+\end{pmatrix}, & \begin{pmatrix}
+\beta_1 \\
+\beta_2 \\ 
+\beta_3 \\
+\beta_4
+\end{pmatrix} &= \begin{pmatrix}
+41 \\
+-84 \\ 
+55 \\
+-12
+\end{pmatrix}, & \begin{pmatrix}
+\delta_1 \\
+\delta_2 \\ 
+\delta_3 \\
+\delta_4
+\end{pmatrix} &= \begin{pmatrix}
+0 \\
+13 \\ 
+-12 \\
+2
+\end{pmatrix}, & \begin{pmatrix}
+\gamma_1 \\
+\gamma_2 \\ 
+\gamma_3 \\
+\gamma_4
+\end{pmatrix} &= \begin{pmatrix}
+0 \\
+14 \\ 
+-15 \\
+4
+\end{pmatrix}.
+\end{align}
+
+For $K_{3, 2}$, the circle counts associated with the hypercube of states of the blowup are given by:
+\begin{lstlisting}[language=Python]
+circle counts by homological degree: [[3], [2, 2, 2, 2, 2, 2], [3, 1, 1, 1, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1, 3], [2, 2, 2, 2, 2, 1, 1, 1, 1, 2, 2, 1, 1, 1, 1, 2, 2, 2, 2, 2], [3, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 3], [2, 2, 2, 2, 2, 2], [3]]
+\end{lstlisting}
+As above, we only need to solve for the coefficients of a degree three polynomial in $n$ without a constant term, \ie\, of the form $
+c_1n^3 + c_2n^2 + c_3n$, for each degree of $t$ up to six and $b$ up to one, using the data from \autoref{table:bicompletepoly} for $K_{3, 2}$ up to $n=3$. Comparing with the data for $K_4$, it is straightforward to see that in fact the solutions for the coefficients $\delta_i$, $\gamma_i$, $i =1, \ldots, 4$ from \autoref{solutions} can be reused to solve the nontrivial systems of equations for $K_{3, 2}$, up to overall constant factors.
+\end{proof}
+
+
+\begin{table}
+\renewcommand{\arraystretch}{1}
+\centering
+\begin{tabular}{| c || w{c}{.75cm} | c| c| }
+\hline 
+$4$ &  $0$ & $4(15 b + 18)(3t^2 + 1)$ & $24(247b+248)t^4 + 24(27b + 28)t^2$   \\ \hline
+$3$ &  $0$  & $3(11 b + 13)(3t^2 + 1)$ & $504(3b+3)t^4 + 3(83b + 85)t^2$ \\ \hline
+$2$ &  $0$  & $2(7b + 8)(3t^2 + 1)$ & $20(3b + 3)(3t^4+t^2)$ \\ \hline
+$1$ &  $0$ & $(3 b + 3)(3t^2 + 1)$ & $(3b+3)t^2$\\\hline \hline
+\diagbox[dir=SW]{$n$}{$m$} & $2$& $3$ & $4$ \\ \hline
+\end{tabular} 
+\caption{$Mh_{n,1}(K_m)$ for a range of $m, n$.}
+\label{table:completepoly}
+\end{table}
+\begin{table}
+\renewcommand{\arraystretch}{1}
+\centering
+\begin{tabular}{| c || w{c}{.75cm} | w{c}{.75cm} | c| c| }
+\hline 
+$4$ &  $0$ & $0$ & $4(15 b + 18)(t^4 + 6t^2 + 1)$ & $24(27b+28)(t^6 + 3t^4+ 3t^2 +1)$  \\ \hline
+$3$ &  $0$ & $0$ & $3(11 b + 13)(t^4 + 6t^2 + 1)$ & $3(83b+85)(t^6 + 3t^4+ 3t^2 +1)$ \\ \hline
+$2$ &  $0$ & $0$ & $2(7 b + 8)(t^4 + 6t^2 + 1)$ & $20(3b+3)(t^6 + 3t^4+ 3t^2 +1)$  \\ \hline
+$1$ &  $0$ & $0$ & $(3b + 3)(t^4+6t^2 + 1)$ & $(3b+3)(t^6 + 3t^4+ 3t^2 +1)$ \\\hline \hline
+\diagbox[dir=SW]{$n$}{$(m, p)$} & $(1, 1)$& $(2,1) $& $(2,2)$ & $(3, 2)$ \\ \hline
+\end{tabular} 
+\caption{$Mh_{n,1}(K_{m,p})$ for a range of $m, p,  n$.}
+\label{table:bicompletepoly}
+\end{table}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\bibliographystyle{alphaurl}
+%\bibliography{references}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{thebibliography}{BHMV95}
+
+
+\bibitem[CT26a]{penrose-cat}
+D.~W. Collison and D.~Tubbenhauer.
+\newblock Categorifying the Penrose polynomial using nonorientable surfaces.
+\newblock 2026.
+\newblock \url{https://arxiv.org/abs/2607.01632}.
+
+
+\bibitem[CT26b]{CoTu-code}
+D.~W. Collison and D.~Tubbenhauer.
+\newblock Code, data and more for ``Categorifying the Penrose polynomial using nonorientable surfaces''.
+\newblock 2026.
+\newblock \url{https://github.com/dtubbenhauer/graphhomology}.
+
+
+\end{thebibliography}
+
+\end{document}
