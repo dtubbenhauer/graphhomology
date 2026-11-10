@@ -340,7 +340,7 @@ In addition, the following .tex file and corresponding .pdf file
 ### `additional_material.tex`
 ### `additional_material.pdf`
 
-contain more details for some of the proofs found in the above paper; the proofs for which this occurs are signposted in both documents.
+contain more details for some of the proofs found in the main paper; the proofs for which this occurs are signposted in both documents.
 
 ## Repository contents
 
