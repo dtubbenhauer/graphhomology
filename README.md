@@ -335,12 +335,11 @@ The suggested citation is:
   url = \url{https://github.com/dtubbenhauer/graphhomology}
 }
 ```
-In addition, the following .tex file and corresponding .pdf file
+In addition, the following file
 
-### `additional_material.tex`
 ### `additional_material.pdf`
 
-contain more details for some of the proofs found in the main paper; the proofs for which this occurs are signposted in both documents.
+and corresponding .tex file contain more details for some of the proofs found in the main paper; the proofs for which this occurs are signposted in both documents.
 
 ## Repository contents
 
@@ -350,8 +349,8 @@ Current intended contents:
 README.md
 LICENSE
 mobius_homology_colab.ipynb
-additional_material.tex
 additional_material.pdf
+additional_material.tex
 ```
 
 Additional examples, corrected notebooks, or output files may be added later.
