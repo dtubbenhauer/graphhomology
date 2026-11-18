@@ -247,7 +247,7 @@ $$
     3bq+3.
 $$
 
-There is also a shortcut for inputing the data for cycle graphs $C_m$, path graphs $P_m$, complete graphs $K_m$, and complete bipartite graphs $K_{m, p}$. The second editable cell allows for the selection of both the family and specified member, before running the main computation performed with the canonical perfect matching. 
+There is also a shortcut for inputing the data for cycle graphs $C_m$, path graphs $P_m$, and complete graphs $K_m$. The second editable cell allows for the selection of both the family and specified member, before running the main computation performed with the canonical perfect matching. 
 
 Finally, the third editable cell counts face colorings for input graphs and a given choice of set $A\subseteq \\{0,1, \ldots, n\\}$ as follows:
 
@@ -266,7 +266,6 @@ trace = get_face_color(cycles, n, A)
 print(f"Number of {color_num}-face colorings: {int(trace)}")
 ```
 The output for this example is 
-
 
 ```text
 Number of 3-face colorings: 6
